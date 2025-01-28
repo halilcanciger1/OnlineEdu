@@ -10,52 +10,63 @@ using System.Threading.Tasks;
 
 namespace OnlineEdu.DataAccess.Repositories
 {
-    public class GenericRepository<T>(IRepository<T> repository) : IRepository<T> where T : class
+    public class GenericRepository<T> : IRepository<T> where T : class
     {
+        protected readonly OnlineEduContext _context;
 
+        public GenericRepository(OnlineEduContext context)
+        {
+            _context = context;
+        }
+
+        public DbSet<T> Table { get => _context.Set<T>(); }
         public int Count()
         {
-            return repository.Count();
+            return Table.Count();
         }
 
         public void Create(T entity)
         {
-            repository.Create(entity);
+            Table.Add(entity);
+            _context.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            repository.Delete(id);
+            var entity = Table.Find(id);
+            Table.Remove(entity);
+            _context.SaveChanges();
         }
 
         public int FilteredCount(Expression<Func<T, bool>> predicate)
         {
-            return repository.FilteredCount(predicate);
+            return Table.Where(predicate).Count();
         }
 
         public T GetByFilter(Expression<Func<T, bool>> predicate)
         {
-            return repository.GetByFilter(predicate);
+            return Table.Where(predicate).FirstOrDefault();
         }
 
         public T GetById(int id)
         {
-            return repository.GetById(id);
+            return Table.Find(id);
         }
 
         public List<T> GetFilteredList(Expression<Func<T, bool>> predicate)
         {
-            return repository.GetFilteredList(predicate);
+            return Table.Where(predicate).ToList();
         }
 
         public List<T> GetList()
         {
-            return repository.GetList();
+            return Table.ToList();
         }
 
         public void Update(T entity)
         {
-            repository.Update(entity);
+            Table.Update(entity);
+            _context.SaveChanges();
         }
     }
 }

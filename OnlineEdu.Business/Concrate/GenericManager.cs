@@ -13,47 +13,47 @@ namespace OnlineEdu.Business.Concrate
     {
         public int TCount()
         {
-            throw new NotImplementedException();
+            return repository.Count();
         }
 
         public void TCreate(T entity)
         {
-            throw new NotImplementedException();
+            repository.Create(entity);
         }
 
         public void TDelete(int id)
         {
-            throw new NotImplementedException();
+            repository.Delete(id);
         }
 
         public int TFilteredCount(Expression<Func<T, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return repository.FilteredCount(predicate);
         }
 
         public T TGetByFilter(Expression<Func<T, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return repository.GetByFilter(predicate);
         }
 
         public T TGetById(int id)
         {
-            throw new NotImplementedException();
+            return repository.GetById(id);
         }
 
         public List<T> TGetFilteredList(Expression<Func<T, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return repository.GetFilteredList(predicate);
         }
 
         public List<T> TGetList()
         {
-            throw new NotImplementedException();
+            return repository.GetList();
         }
 
         public void TUpdate(T entity)
         {
-            throw new NotImplementedException();
+            repository.Update(entity);
         }
     }
 }
