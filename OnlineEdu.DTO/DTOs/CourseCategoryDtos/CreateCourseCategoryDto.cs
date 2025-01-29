@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineEdu.Entity.Entities
+namespace OnlineEdu.DTO.DTOs.CourseCategoryDtos
 {
-    public class CourseCategory
+    public class CreateCourseCategoryDto
     {
-        public int CourseCategoryId { get; set; }
-
         public string Name { get; set; }
 
         public string Description { get; set; }
@@ -17,7 +15,5 @@ namespace OnlineEdu.Entity.Entities
         public string Icon { get; set; }
 
         public bool IsShown { get; set; }
-
-        public List<Course> Courses { get; set; }
     }
 }

@@ -1,12 +1,13 @@
-﻿using System;
+﻿using OnlineEdu.Entity.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineEdu.Entity.Entities
+namespace OnlineEdu.DTO.DTOs.CourseDtos
 {
-    public class Course
+    public class UpdateCourseDto
     {
         public int CourseId { get; set; }
 
@@ -19,7 +20,5 @@ namespace OnlineEdu.Entity.Entities
         public decimal Price { get; set; }
 
         public bool IsShown { get; set; }
-
-        public CourseCategory CourseCategory { get; set; }
     }
 }

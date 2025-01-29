@@ -1,14 +1,14 @@
-﻿using System;
+﻿using OnlineEdu.Entity.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineEdu.Entity.Entities
+namespace OnlineEdu.DTO.DTOs.CourseDtos
 {
-    public class Course
+    public class CreateCourseDto
     {
-        public int CourseId { get; set; }
 
         public string CourseName { get; set; }
 
@@ -20,6 +20,6 @@ namespace OnlineEdu.Entity.Entities
 
         public bool IsShown { get; set; }
 
-        public CourseCategory CourseCategory { get; set; }
+
     }
 }
