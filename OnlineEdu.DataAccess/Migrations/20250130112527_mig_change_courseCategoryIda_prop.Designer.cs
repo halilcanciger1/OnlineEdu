@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineEdu.DataAccess.Context;
 
@@ -11,9 +12,11 @@ using OnlineEdu.DataAccess.Context;
 namespace OnlineEdu.DataAccess.Migrations
 {
     [DbContext(typeof(OnlineEduContext))]
-    partial class OnlineEduContextModelSnapshot : ModelSnapshot
+    [Migration("20250130112527_mig_change_courseCategoryIda_prop")]
+    partial class mig_change_courseCategoryIda_prop
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -221,60 +224,6 @@ namespace OnlineEdu.DataAccess.Migrations
                     b.HasKey("CourseCategoryId");
 
                     b.ToTable("CourseCategories");
-                });
-
-            modelBuilder.Entity("OnlineEdu.Entity.Entities.Message", b =>
-                {
-                    b.Property<int>("MessageId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MessageId"));
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Subject")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("MessageId");
-
-                    b.ToTable("Message");
-                });
-
-            modelBuilder.Entity("OnlineEdu.Entity.Entities.SocialMedia", b =>
-                {
-                    b.Property<int>("SocialMediaId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SocialMediaId"));
-
-                    b.Property<string>("Icon")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Url")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("SocialMediaId");
-
-                    b.ToTable("SocialMedia");
                 });
 
             modelBuilder.Entity("OnlineEdu.Entity.Entities.Subscriber", b =>

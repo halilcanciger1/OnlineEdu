@@ -32,6 +32,10 @@ namespace OnlineEdu.DataAccess.Context
 
         public DbSet<Subscriber> Subscribers { get; set; }
 
+        public DbSet<SocialMedia> SocialMedia { get; set; }
+
+        public DbSet<Message> Message { get; set; }
+
         public DbSet<Testimonial> Testimonials { get; set; }
     }
 }
