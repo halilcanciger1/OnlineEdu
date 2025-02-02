@@ -11,13 +11,13 @@ namespace OnlineEdu.DataAccess.Abstract
     {
         List<T> GetList();
 
-        T GetByFilter(Expression <Func<T, bool>> predicate);
+        T GetByFilter(Expression<Func<T, bool>> predicate);
 
         T GetById(int id);
 
         void Create(T entity);
 
-        void Update(T entity);  
+        void Update(T entity);
 
         void Delete(int id);
 
