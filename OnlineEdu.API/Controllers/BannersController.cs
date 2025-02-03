@@ -1,8 +1,9 @@
-﻿using AutoMapper;
+﻿
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OnlineEdu.Business.Abstract;
-using OnlineEdu.DTO.DTOs.AboutDtos;
+using OnlineEdu.DTO.DTOs.BannerDtos;
 using OnlineEdu.Entity.Entities;
 
 namespace OnlineEdu.API.Controllers
@@ -38,18 +39,18 @@ namespace OnlineEdu.API.Controllers
 
         [HttpPost]
 
-        public IActionResult Create(CreateAboutDto createAboutDto)
+        public IActionResult Create(CreateBannerDto createBannerDto)
         {
-            var newValue = mapper.Map<Banner>(createAboutDto);
+            var newValue = mapper.Map<Banner>(createBannerDto);
             bannerService.TCreate(newValue);
             return Ok("Yeni hakkımızda alanı oluşturuldu");
         }
 
         [HttpPut]
 
-        public IActionResult Update(UpdateAboutDto updateAboutDto)
+        public IActionResult Update(UpdateBannerDto updateBannerDto)
         {
-            var value = mapper.Map<Banner>(updateAboutDto);
+            var value = mapper.Map<Banner>(updateBannerDto);
             bannerService.TUpdate(value);
             return Ok("Hakkımızda alanı güncellendi");
         }

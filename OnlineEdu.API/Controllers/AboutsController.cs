@@ -9,7 +9,7 @@ namespace OnlineEdu.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AboutsController(IGenericService<About> aboutService,IMapper mapper) : ControllerBase
+    public class AboutsController(IGenericService<About> aboutService, IMapper mapper) : ControllerBase
     {
         [HttpGet]
 
@@ -30,7 +30,7 @@ namespace OnlineEdu.API.Controllers
 
         [HttpDelete]
 
-        public IActionResult Delete(int id) 
+        public IActionResult Delete(int id)
         {
             aboutService.TDelete(id);
             return Ok("Hakkımızda alanı silindi");

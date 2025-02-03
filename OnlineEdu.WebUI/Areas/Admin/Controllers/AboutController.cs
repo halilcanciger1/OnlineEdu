@@ -20,7 +20,7 @@ namespace OnlineEdu.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> DeleteAbout(int id)
         {
             await _client.DeleteAsync($"abouts/{id}");
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
 
 
