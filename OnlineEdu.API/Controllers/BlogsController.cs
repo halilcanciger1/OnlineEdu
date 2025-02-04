@@ -10,13 +10,13 @@ namespace OnlineEdu.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BlogsController(IGenericService<Blog> blogService, IMapper mapper) : ControllerBase
+    public class BlogsController(IGenericService<Blog> blogService, IMapper mapper, IBlogService blogService1) : ControllerBase
     {
         [HttpGet]
 
         public IActionResult Get()
         {
-            var values = blogService.TGetList();
+            var values = blogService1.GetBlogsWithCategories();
             return Ok(values);
         }
 
@@ -29,7 +29,7 @@ namespace OnlineEdu.API.Controllers
             return Ok(value);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
 
         public IActionResult Delete(int id)
         {

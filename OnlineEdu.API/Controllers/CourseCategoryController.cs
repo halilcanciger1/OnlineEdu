@@ -27,7 +27,7 @@ namespace OnlineEdu.API.Controllers
             var value = courseCategoryService.TGetById(id);
             return Ok(value);
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
 
         public IActionResult Delete(int id)
         {

@@ -28,7 +28,7 @@ namespace OnlineEdu.API.Controllers
             return Ok(value);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
 
         public IActionResult Delete(int id)
         {

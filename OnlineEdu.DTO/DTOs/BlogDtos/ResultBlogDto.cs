@@ -1,4 +1,5 @@
-﻿using OnlineEdu.Entity.Entities;
+﻿using OnlineEdu.DTO.DTOs.BlogCategoryDtos;
+using OnlineEdu.Entity.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,6 @@ namespace OnlineEdu.DTO.DTOs.BlogDtos
 
         public int BlogCategoryId { get; set; }
 
-        public ResultBlogDto BlogCategory { get; set; }
+        public ResultBlogCategoryDto BlogCategory { get; set; }
     }
 }

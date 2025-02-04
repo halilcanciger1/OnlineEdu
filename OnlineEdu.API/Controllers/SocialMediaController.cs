@@ -46,7 +46,7 @@ namespace OnlineEdu.API.Controllers
             return Ok("Yeni sosyal medya alanı oluşturuldu");
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
 
         public IActionResult Update(UpdateSocialMediaDto updateSocialMediaDto)
         {
