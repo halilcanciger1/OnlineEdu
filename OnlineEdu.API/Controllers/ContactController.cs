@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OnlineEdu.Business.Abstract;
-using OnlineEdu.DTO.DTOs.BlogDtos;
 using OnlineEdu.DTO.DTOs.ContactDtos;
 using OnlineEdu.Entity.Entities;
 

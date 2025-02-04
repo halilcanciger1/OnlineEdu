@@ -11,7 +11,7 @@ namespace OnlineEdu.DTO.DTOs.AboutDtos
     {
         public int AboutId { get; set; }
 
-        public string Descripton { get; set; }
+        public string Description { get; set; }
 
         public string ImageUrl1 { get; set; }
 

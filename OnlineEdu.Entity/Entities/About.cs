@@ -10,7 +10,7 @@ namespace OnlineEdu.Entity.Entities
     {
         public int AboutId { get; set; }
 
-        public string Descripton { get; set; }
+        public string Description { get; set; }
 
         public string ImageUrl1 { get; set; }
 

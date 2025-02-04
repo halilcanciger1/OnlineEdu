@@ -13,7 +13,7 @@ namespace OnlineEdu.DTO.DTOs.AboutDtos
     public class CreateAboutDto
     {
 
-        public string Descripton { get; set; }
+        public string Description { get; set; }
 
         public string ImageUrl1 { get; set; }
 
