@@ -29,7 +29,7 @@ namespace OnlineEdu.API.Controllers
             return Ok(value);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
 
         public IActionResult Delete(int id)
         {
@@ -46,7 +46,7 @@ namespace OnlineEdu.API.Controllers
             return Ok("Yeni sosyal medya alanı oluşturuldu");
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
 
         public IActionResult Update(UpdateSocialMediaDto updateSocialMediaDto)
         {
