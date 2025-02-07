@@ -66,5 +66,12 @@ namespace OnlineEdu.API.Controllers
             courseCategoryService1.TDontShownOnHome(id);
             return Ok("Anasayfada gösterilmedi");
         }
+
+        [HttpGet("GetActiveCategories")]
+        public IActionResult GetActiveCategories()
+        {
+            var values = courseCategoryService.TGetFilteredList(x => x.IsShown == true);
+            return Ok(values);
+        }
     }
 }
