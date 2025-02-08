@@ -1,12 +1,17 @@
 using Microsoft.EntityFrameworkCore;
 using OnlineEdu.DataAccess.Context;
+using OnlineEdu.Entity.Entities;
+using OnlineEdu.WebUI.Services.UserServices;
+using OnlineEdu.WebUI.Validator;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddDbContext<OnlineEduContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection")));
 builder.Services.AddHttpClient();
+builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<OnlineEduContext>().AddErrorDescriber<CustomErrorDescriber>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
