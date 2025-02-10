@@ -6,7 +6,7 @@ namespace OnlineEdu.WebUI.Controllers
 {
     public class RegisterController(IUserService userService) : Controller
     {
-        public IActionResult SignIn()
+        public IActionResult SignUp()
         {
             return View();
         }

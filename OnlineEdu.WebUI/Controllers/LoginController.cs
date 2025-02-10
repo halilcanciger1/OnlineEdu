@@ -11,6 +11,7 @@ namespace OnlineEdu.WebUI.Controllers
             return View();
         }
 
+        [HttpPost]
         public async Task<IActionResult> SignIn(UserLoginDto userLoginDto)
         {
             var userRole = await userService.LoginAsync(userLoginDto);
