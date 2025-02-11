@@ -75,5 +75,13 @@ namespace OnlineEdu.API.Controllers
             var values = courseService.TGetFilteredList(x => x.IsShown == true);
             return Ok(values);
         }
+
+        [HttpGet("GetCoursesByTeacherId/{id}")]
+        public IActionResult GetCoursesByTeacherId(int id)
+        {
+            var values = courseService.TGetFilteredList(x => x.AppUserId == id);
+            var mappedValues = mapper.Map<List<ResultCourseDto>>(values);
+            return Ok(mappedValues);
+        }
     }
 }
