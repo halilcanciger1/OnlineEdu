@@ -1,5 +1,5 @@
 ﻿using OnlineEdu.WebUI.DTOs.CourseCategoryDtos;
-
+using OnlineEdu.WebUI.DTOs.UserDtos;
 
 namespace OnlineEdu.WebUI.DTOs.CourseDtos
 {

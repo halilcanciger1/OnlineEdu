@@ -10,6 +10,8 @@ namespace OnlineEdu.Business.Abstract
 {
     public interface ICourseService : IRepository<Course>
     {
+        List<Course> GetCoursesByTeacherId(int id);
+        List<Course> GetAllCoursesWithCategories();
         void TShownOnHome(int id);
         void TDontShownOnHome(int id);
     }

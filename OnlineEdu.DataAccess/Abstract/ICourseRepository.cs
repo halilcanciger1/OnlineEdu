@@ -9,6 +9,10 @@ namespace OnlineEdu.DataAccess.Abstract
 {
     public interface ICourseRepository : IRepository<Course>
     {
+        List<Course> GetCoursesByTeacherId(int id);
+
+        List<Course> GetAllCoursesWithCategories();
+
         void ShownOnHome(int id);
 
         void DontShownOnHome(int id);

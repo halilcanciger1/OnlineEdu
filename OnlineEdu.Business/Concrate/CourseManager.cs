@@ -39,6 +39,11 @@ namespace OnlineEdu.Business.Concrate
             throw new NotImplementedException();
         }
 
+        public List<Course> GetAllCoursesWithCategories()
+        {
+            return _courseRepository.GetAllCoursesWithCategories();
+        }
+
         public Course GetByFilter(Expression<Func<Course, bool>> predicate)
         {
             throw new NotImplementedException();
@@ -47,6 +52,11 @@ namespace OnlineEdu.Business.Concrate
         public Course GetById(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public List<Course> GetCoursesByTeacherId(int id)
+        {
+            return _courseRepository.GetCoursesByTeacherId(id);
         }
 
         public List<Course> GetFilteredList(Expression<Func<Course, bool>> predicate)
