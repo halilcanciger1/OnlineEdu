@@ -39,5 +39,7 @@ namespace OnlineEdu.DataAccess.Context
 
         public DbSet<Testimonial> Testimonials { get; set; }
         public object Courses { get; internal set; }
+
+        public DbSet<TeacherSocial> TeachersSocials { get; set; }
     }
 }
