@@ -49,13 +49,13 @@
             <div class="main-header ">
                 <div class="header-top d-none d-lg-block">
                     <!-- Left Social -->
-                    
+					@await Component.InvokeAsync("_UILayoutHeaderSocialMediaComponent")
 
                     <div class="container">
                         <div class="col-xl-12">
                             <div class="row d-flex justify-content-between align-items-center">
 
-                                
+                                @await Component.InvokeAsync("_UILayoutHeaderContactInfoComponent")
 
                                 <div class="header-info-right">
                                     <ul>
