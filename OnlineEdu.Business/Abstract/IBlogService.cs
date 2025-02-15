@@ -11,5 +11,7 @@ namespace OnlineEdu.Business.Abstract
     public interface IBlogService : IRepository<Blog>
     {
         List<Blog> GetBlogsWithCategories();
+
+        List<Blog> GetBlogsWithCategoriesByWriter(int id);
     }
 }

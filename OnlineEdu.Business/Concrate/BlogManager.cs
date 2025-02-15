@@ -44,6 +44,11 @@ namespace OnlineEdu.Business.Concrate
             return _blogRepository.GetBlogsWithCategories();
         }
 
+        public List<Blog> GetBlogsWithCategoriesByWriter(int id)
+        {
+            return _blogRepository.GetBlogsWithCategoriesByWriter(id);
+        }
+
         public Blog GetByFilter(Expression<Func<Blog, bool>> predicate)
         {
             throw new NotImplementedException();
