@@ -20,6 +20,14 @@ namespace OnlineEdu.API.Controllers
             return Ok(values);
         }
 
+        [HttpGet("Get4Blogs")]
+        public IActionResult Get4Blogs()
+        {
+            var values = blogService1.TGet4BlogsWithCategories();
+            var mappedValues = mapper.Map<List<ResultBlogDto>>(values);
+            return Ok(values);
+        }
+
 
         [HttpGet("{id}")]
 

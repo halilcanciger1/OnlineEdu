@@ -20,6 +20,11 @@ namespace OnlineEdu.DataAccess.Concrate
             _context = context;
         }
 
+        public List<Blog> Get4BlogsWithCategories()
+        {
+            return _context.Blogs.Include(x => x.BlogCategory).OrderByDescending(x => x.BlogId).Take(4).ToList();
+        }
+
         public List<Blog> GetBlogsWithCategories()
         {
             return _context.Blogs.Include(x => x.BlogCategory).ToList();

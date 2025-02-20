@@ -69,6 +69,11 @@ namespace OnlineEdu.Business.Concrate
             throw new NotImplementedException();
         }
 
+        public List<Blog> TGet4BlogsWithCategories()
+        {
+            return _blogRepository.Get4BlogsWithCategories();
+        }
+
         public void Update(Blog entity)
         {
             throw new NotImplementedException();
