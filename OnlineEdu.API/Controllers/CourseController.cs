@@ -84,5 +84,11 @@ namespace OnlineEdu.API.Controllers
             var mappedValues = mapper.Map<List<ResultCourseDto>>(values);
             return Ok(mappedValues);
         }
+        [HttpGet("GetCourseCount")]
+        public IActionResult GetCourseCount()
+        {
+            var count = courseService.TCount();
+            return Ok(count);
+        }
     }
 }

@@ -71,5 +71,11 @@ namespace OnlineEdu.API.Controllers
             return Ok(mappedValue);
 
         }
+        [HttpGet("GetBlogCount")]
+        public IActionResult GetBlogCount()
+        {
+            var value = blogService.TCount();
+            return Ok(value);
+        }
     }
 }

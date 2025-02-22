@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OnlineEdu.Business.Abstract;
@@ -53,6 +54,12 @@ namespace OnlineEdu.API.Controllers
             var value = mapper.Map<Testimonial>(updateTestimonialDto);
             testimonialService.TUpdate(value);
             return Ok("Testimonial alanı güncellendi");
+        }
+        [HttpGet("GetTestimonialCount")]
+        public IActionResult GetTestimonialCount()
+        {
+            var count = testimonialService.TCount();
+            return Ok(count);
         }
     }
 }
