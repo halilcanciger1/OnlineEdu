@@ -39,7 +39,7 @@ namespace OnlineEdu.Business.Concrate
             throw new NotImplementedException();
         }
 
-        public List<Course> GetAllCoursesWithCategories()
+        public List<Course> TGetAllCoursesWithCategories()
         {
             return _courseRepository.GetAllCoursesWithCategories();
         }
@@ -72,6 +72,12 @@ namespace OnlineEdu.Business.Concrate
         public void TDontShownOnHome(int id)
         {
             _courseRepository.DontShownOnHome(id);
+        }
+
+        
+        public List<Course> TGetAllCoursesWithCategories(Expression<Func<Course, bool>> filter = null)
+        {
+            return _courseRepository.GetAllCoursesWithCategories(filter);
         }
 
         public void TShownOnHome(int id)
