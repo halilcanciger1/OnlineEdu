@@ -15,5 +15,9 @@ namespace OnlineEdu.Business.Abstract
         List<Blog> GetBlogsWithCategoriesByWriter(int id);
 
         List<Blog> TGet4BlogsWithCategories();
+
+        List<Blog> TGetBlogsByCategoryId(int id);
+
+        Blog TGetBlogWithCategory(int id);
     }
 }

@@ -28,12 +28,18 @@ namespace OnlineEdu.API.Controllers
             return Ok(values);
         }
 
+        [HttpGet("GetBlogsByCategoryId{id}")]
+        public IActionResult GetBlogsByCategoryId(int id)
+        {
+            var blogCaunt = blogService1.TGetBlogsByCategoryId(id);
+            return Ok(blogCaunt);
+        }
 
         [HttpGet("{id}")]
 
         public IActionResult GetById(int id)
         {
-            var value = blogService.TGetById(id);
+            var value = blogService1.TGetBlogWithCategory(id);
             return Ok(value);
         }
 

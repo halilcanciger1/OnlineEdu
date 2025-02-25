@@ -5,7 +5,7 @@ using OnlineEdu.WebUI.Models;
 
 namespace OnlineEdu.WebUI.ViewComponents.Blog
 {
-    public class _BlogCategoryList : ViewComponent
+    public class _BlogCategoryListComponent : ViewComponent
     {
         private readonly HttpClient _client = HttpClientInstance.CreateClient();
 

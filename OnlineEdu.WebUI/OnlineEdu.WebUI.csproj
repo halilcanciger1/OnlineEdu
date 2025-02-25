@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="ViewComponents\Blog\_BlogCategoryList.Component.cs" />
+    <None Include="ViewComponents\Blog\_BlogCategoryListComponent.cs" />
     <None Include="wwwroot\login-form-07\.DS_Store" />
     <None Include="wwwroot\login-form-07\css\.DS_Store" />
     <None Include="wwwroot\login-form-07\fonts\.DS_Store" />
