@@ -33,7 +33,7 @@ namespace OnlineEdu.WebUI.Controllers
         [HttpGet]
         public async Task<IActionResult> BlogsByCategory(int id)
         {
-            var value = await _client.GetFromJsonAsync<List<ResultAboutDto>>("blogs/GetBlogsByCategoryId" + id);
+            var value = await _client.GetFromJsonAsync<List<ResultBlogDto>>("blogs/GetBlogsByCategoryId" + id);
             return View(value);
         }
     }
