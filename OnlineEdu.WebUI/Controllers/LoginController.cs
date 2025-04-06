@@ -18,17 +18,17 @@ namespace OnlineEdu.WebUI.Controllers
 
             if (userRole == "Admin")
             {
-                return RedirectToAction("Index", "About", new {area = "Admin"});
+                return RedirectToAction("Index", "About", new { area = "Admin" });
             }
 
             if (userRole == "Teacher")
             {
-                return RedirectToAction("Index", "MyCourse", new {area = "Teacher"});
+                return RedirectToAction("Index", "MyCourse", new { area = "Teacher" });
             }
 
             if (userRole == "Student")
             {
-                return RedirectToAction("Index", "CourseRegister", new {area = "Student"} );
+                return RedirectToAction("Index", "CourseRegister", new { area = "Student" });
             }
 
             else
@@ -36,8 +36,12 @@ namespace OnlineEdu.WebUI.Controllers
                 ModelState.AddModelError("", "Email veya şifre hatalı");
                 return View();
             }
-
-
+        }
+        public async Task<IActionResult> Logout()
+        {
+            await userService.LogoutAsync();
+            return RedirectToAction("Index", "Home");
         }
     }
+    
 }

@@ -27,7 +27,7 @@ namespace OnlineEdu.DataAccess.Concrate
 
         public List<Course> GetAllCoursesWithCategories()
         {
-            return _context.Course.Include(x => x.CourseCategory).ToList();
+            return _context.Course.Include(x => x.CourseCategory).Include(x => x.AppUser).ToList();
         }
 
         public List<Course> GetAllCoursesWithCategories(Expression<Func<Course, bool>> filter = null)

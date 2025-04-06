@@ -17,6 +17,7 @@
         <th>Kurs Adı</th>
         <th>Fiyat</th>
         <th>Kategori</th>
+        <th>Eğitmen</th>
         <th>Gösterilme Durumu</th>
 
         <th></th>
@@ -32,7 +33,8 @@
             <th><img src="@item.ImageUrl" style="height:75px;width:75px" /></th>
             <td>@item.CourseName</td>
             <td>@item.Price ₺</td>
-            <td>@item.CourseCategoryId </td>
+            <td>@item.CourseCategory.Name </td>
+            <td>@item.AppUser.FirstName @item.AppUser.LastName </td>
             <td>@(item.IsShown ? "Gösteriliyor" : "Gösterilmiyor") </td>
             <td>
                 <button onclick="deleteCourse(@item.CourseId)" class="btn btn-outline-danger">Sil</button>
@@ -41,17 +43,10 @@
 
 
             </td>
-            @if (item.IsShown){
-				<td>
-                    <a asp-action="DontShownOnHome" asp-controller="Course" asp-area="Admin" asp-route-id="@item.CourseId" class="btn btn-outline-secondary"> Gösterme</a>
-				</td>
-            }
-            else{
-                <td>
-					<a asp-action="ShownOnHome" asp-controller="Course" asp-area="Admin" asp-route-id="@item.CourseId" class="btn btn-outline-success"> Göster</a>
-                </td>
-            }
-            
+            <td>
+                <a asp-action="ShowOnHome" asp-controller="Course" asp-area="Admin" asp-route-id="@item.CourseId" class="btn btn-outline-success"> Göster</a>
+                <a asp-action="DontShowOnHome" asp-controller="Course" asp-area="Admin" asp-route-id="@item.CourseId" class="btn btn-outline-secondary"> Gösterme</a>
+            </td>
         </tr>
     }
 </table>
@@ -85,4 +80,3 @@
     }
 
 </script>
-
