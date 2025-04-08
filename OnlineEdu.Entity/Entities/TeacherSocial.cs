@@ -18,6 +18,6 @@ namespace OnlineEdu.Entity.Entities
 
         public string SocialMediaName { get; set; }
 
-        public AppUser Teacher { get; set; }
+        public virtual AppUser Teacher { get; set; }
     }
 }

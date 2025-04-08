@@ -20,12 +20,14 @@ namespace OnlineEdu.Entity.Entities
 
         public bool IsShown { get; set; }
 
-        public CourseCategory CourseCategory { get; set; }
+        public virtual CourseCategory CourseCategory { get; set; }
 
         public int? AppUserId { get; set; }
 
-        public AppUser AppUser { get; set; }
+        public virtual AppUser AppUser { get; set; }
 
-        public List<CourseRegister> CourseRegisters { get; set; }
+        public virtual List<CourseRegister> CourseRegisters { get; set; }
+
+        public virtual List<CourseVideo> CourseVideos { get; set; }
     }
 }
