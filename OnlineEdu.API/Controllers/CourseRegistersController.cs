@@ -46,5 +46,7 @@ namespace OnlineEdu.API.Controllers
             var value = genericService.TGetById(id);
             return Ok(value);
         }
+
+        
     }
 }

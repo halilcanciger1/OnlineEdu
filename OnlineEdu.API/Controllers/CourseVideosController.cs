@@ -52,5 +52,12 @@ namespace OnlineEdu.API.Controllers
             courseVideoService.TUpdate(value);
             return Ok("Hakkımızda alanı güncellendi");
         }
+
+        [HttpGet("GetCourseVideosByCourseId/{id}")]
+        public IActionResult GetCourseVideosByCourseId(int id)
+        {
+            var values = courseVideoService.TGetFilteredList(x => x.CourseId == id);
+            return Ok(values);
+        }
     }
 }

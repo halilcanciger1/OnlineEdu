@@ -1,11 +1,6 @@
-﻿using OnlineEdu.DTO.DTOs.CourseDtos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OnlineEdu.WebUI.DTOs.CourseDtos;
 
-namespace OnlineEdu.DTO.DTOs.CourseVideoDtos
+namespace OnlineEdu.WebUI.DTOs.CourseVideoDtos
 {
     public class UpdateCourseVideoDto
     {
@@ -17,6 +12,6 @@ namespace OnlineEdu.DTO.DTOs.CourseVideoDtos
 
         public int VideoNumber { get; set; }
 
-        
+        public ResultCourseDto Course { get; set; }
     }
 }

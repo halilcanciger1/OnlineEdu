@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using OnlineEdu.Entity.Entities;
 using OnlineEdu.WebUI.DTOs.CourseDtos;
 using OnlineEdu.WebUI.DTOs.CourseRegisterDtos;
+using OnlineEdu.WebUI.DTOs.CourseVideoDtos;
 using OnlineEdu.WebUI.Helpers;
 
 namespace OnlineEdu.WebUI.Areas.Student.Controllers
@@ -64,5 +65,13 @@ namespace OnlineEdu.WebUI.Areas.Student.Controllers
             return View(createCourseRegisterDto);
 
         }
+        public async Task<IActionResult> CourseVideos(int id)
+        {
+            var values = await client.GetFromJsonAsync<List<ResultCourseVideoDto>>("courseVideos/GetCourseVideosByCourseId/" + id);
+
+            ViewBag.courseName = values.Select(x => x.Course.CourseName).FirstOrDefault();
+            return View(values);
+        }
+
     }
 }
