@@ -17,27 +17,28 @@ namespace OnlineEdu.Business.Concrate
 {
     public class JwtManager : IJwtService
     {
-        private readonly JwtTokenOptions _jwtTokenOptions;
+        private readonly JwtTokenOptions _tokenOptions;
         private readonly UserManager<AppUser> _userManager;
 
-        public JwtManager(IOptions<JwtTokenOptions> jwtTokenOptions, UserManager<AppUser> userManager)
+        public JwtManager(IOptions<JwtTokenOptions> tokenOptions, UserManager<AppUser> userManager)
         {
-            _jwtTokenOptions = jwtTokenOptions.Value;
+            _tokenOptions = tokenOptions.Value;
             _userManager = userManager;
         }
 
-        public async Task<LoginResponseDto> CreateTokenAsync(AppUser appUser)
+        public async Task<LoginResponseDto> CreateTokenAsync(AppUser user)
         {
-            var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtTokenOptions.Key));
+            var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_tokenOptions.Key));
 
-            var userRoles = await _userManager.GetRolesAsync(appUser);
+            var userRoles = await _userManager.GetRolesAsync(user);
 
-            List<Claim> claims = new List<Claim>
+            List<Claim> claims = new List<Claim>()
             {
-                new Claim(ClaimTypes.NameIdentifier, appUser.Id.ToString()),
-                new Claim(ClaimTypes.Email, appUser.Email),
-                new Claim(ClaimTypes.Name, appUser.UserName),
-                new Claim("fullName", appUser.FirstName + " " + appUser.LastName)
+                new Claim(ClaimTypes.NameIdentifier,user.Id.ToString()),
+                new Claim(ClaimTypes.Email,user.Email),
+                new Claim(ClaimTypes.Name,user.UserName),
+                new Claim("fullName",user.FirstName+" "+user.LastName),
+
 
             };
 
@@ -47,23 +48,23 @@ namespace OnlineEdu.Business.Concrate
             }
 
             JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(
-                issuer: _jwtTokenOptions.Issuer,
-                audience: _jwtTokenOptions.Audience,
-                expires: DateTime.UtcNow.AddMinutes(_jwtTokenOptions.ExpireInMinutes),
-                notBefore: DateTime.UtcNow,
+                issuer: _tokenOptions.Issuer,
+                audience: _tokenOptions.Audience,
                 claims: claims,
+                notBefore: DateTime.UtcNow,
+                expires: DateTime.UtcNow.AddMinutes(_tokenOptions.ExpireInMinutes),
                 signingCredentials: new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256)
-            );
+                );
 
             var handler = new JwtSecurityTokenHandler();
             var responseDto = new LoginResponseDto();
             responseDto.Token = handler.WriteToken(jwtSecurityToken);
-            responseDto.ExpireDate = DateTime.UtcNow.AddMinutes(_jwtTokenOptions.ExpireInMinutes);
-            return responseDto;
+            responseDto.ExpireDate = DateTime.UtcNow.AddMinutes(_tokenOptions.ExpireInMinutes);
 
+            return responseDto;
 
         }
     }
-    
-    
+
+
 }

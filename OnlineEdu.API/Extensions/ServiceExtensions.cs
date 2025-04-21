@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using OnlineEdu.Business.Abstract;
 using OnlineEdu.Business.Concrate;
 using OnlineEdu.Business.Configurations;
@@ -25,7 +26,12 @@ namespace OnlineEdu.API.Extensions
             services.AddScoped<IBlogCategoryRepository, BlogCategoryRepository>();
             services.AddScoped<IBlogCategoryService, BlogCategoryManager>();
 
-            services.Configure<JwtTokenOptions>(configuration.GetSection("JwtTokenOptions"));
+            services.Configure<JwtTokenOptions>(configuration.GetSection("TokenOptions"));
+
+
+            services.AddScoped<IJwtService, JwtManager>();
+            
+
         }
     }
 
