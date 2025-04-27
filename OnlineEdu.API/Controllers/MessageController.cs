@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OnlineEdu.Business.Abstract;
@@ -8,10 +9,12 @@ using OnlineEdu.Entity.Entities;
 
 namespace OnlineEdu.API.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class MessageController(IGenericService<Message> messageService, IMapper mapper) : ControllerBase
     {
+        
         [HttpGet]
 
         public IActionResult Get()
@@ -36,6 +39,7 @@ namespace OnlineEdu.API.Controllers
             messageService.TDelete(id);
             return Ok("Mesaj alanı silindi");
         }
+        [AllowAnonymous]
         [HttpPost]
 
         public IActionResult Create(CreateMassageDto createMessageDto)

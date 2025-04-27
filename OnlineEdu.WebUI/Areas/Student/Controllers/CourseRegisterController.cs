@@ -7,19 +7,20 @@ using OnlineEdu.WebUI.DTOs.CourseDtos;
 using OnlineEdu.WebUI.DTOs.CourseRegisterDtos;
 using OnlineEdu.WebUI.DTOs.CourseVideoDtos;
 using OnlineEdu.WebUI.Helpers;
+using OnlineEdu.WebUI.Services.TokenServices;
 
 namespace OnlineEdu.WebUI.Areas.Student.Controllers
 {
     [Area("Student")]
     [Authorize(Roles = "Student")]
-    public class CourseRegisterController(UserManager<AppUser> userManager) : Controller
+    public class CourseRegisterController(ITokenService _tokenService) : Controller
     {
         private readonly HttpClient client = HttpClientInstance.CreateClient();
         public async Task<IActionResult> Index()
         {
-            var user = await userManager.FindByNameAsync(User.Identity.Name);
+            var userId = _tokenService.GetUserId; 
 
-            var values = await client.GetFromJsonAsync<List<ResultCourseRegisterDto>>("courseRegisters/GetMyCourses/" + user.Id);
+            var values = await client.GetFromJsonAsync<List<ResultCourseRegisterDto>>("courseRegisters/GetMyCourses/" + userId);
 
             return View(values);
         }
@@ -52,8 +53,8 @@ namespace OnlineEdu.WebUI.Areas.Student.Controllers
                                             }).ToList();
             ViewBag.courses = courses;
 
-            var user = await userManager.FindByNameAsync(User.Identity.Name);
-            createCourseRegisterDto.AppUserId = user.Id;
+            var userId = _tokenService.GetUserId;
+            createCourseRegisterDto.AppUserId = userId;
 
             var response = await client.PostAsJsonAsync("courseRegisters", createCourseRegisterDto);
 

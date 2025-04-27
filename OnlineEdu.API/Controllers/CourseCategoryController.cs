@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,10 +10,12 @@ using OnlineEdu.Entity.Entities;
 
 namespace OnlineEdu.API.Controllers
 {
+    [Authorize(Roles = "Admin,Teacher")]
     [Route("api/[controller]")]
     [ApiController]
     public class CourseCategoryController(IGenericService<CourseCategory> courseCategoryService, IMapper mapper, ICourseCategoryService courseCategoryService1) : ControllerBase
     {
+        [AllowAnonymous]
         [HttpGet]
 
         public IActionResult Get()
@@ -66,13 +69,14 @@ namespace OnlineEdu.API.Controllers
             courseCategoryService1.TDontShownOnHome(id);
             return Ok("Anasayfada gösterilmedi");
         }
-
+        [AllowAnonymous]
         [HttpGet("GetActiveCategories")]
         public IActionResult GetActiveCategories()
         {
             var values = courseCategoryService.TGetFilteredList(x => x.IsShown == true);
             return Ok(values);
         }
+        [AllowAnonymous]
         [HttpGet("GetCourseCategoryCount")]
         public IActionResult GetCourseCategoryCount()
         {

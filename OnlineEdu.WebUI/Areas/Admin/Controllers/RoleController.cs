@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OnlineEdu.Entity.Entities;
 using OnlineEdu.WebUI.DTOs.RoleDtos;
+using OnlineEdu.WebUI.Helpers;
 using OnlineEdu.WebUI.Services.RoleServices;
 
 namespace OnlineEdu.WebUI.Areas.Admin.Controllers
@@ -13,11 +14,11 @@ namespace OnlineEdu.WebUI.Areas.Admin.Controllers
 
     public class RoleController(IRoleService roleService) : Controller
     {
+        private readonly HttpClient _client = HttpClientInstance.CreateClient();
 
-        
         public async Task<IActionResult> Index()
         {
-            var values = await roleService.GetAllRolesAsync();
+            var values = await _client.GetFromJsonAsync<List<ResultRoleDto>>("roles");
             return View(values);
         }
 
@@ -29,14 +30,14 @@ namespace OnlineEdu.WebUI.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateRole(CreateRoleDto createRoleDto)
         {
-            await roleService.CreateRoleAsync(createRoleDto);
-            return RedirectToAction(nameof(Index));
+            await _client.PostAsJsonAsync("roles", createRoleDto);
+            return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> DeleteRole(int id)
         {
-            await roleService.DeleteRoleAsync(id);
-            return RedirectToAction(nameof(Index));
+            await _client.DeleteAsync("roles/" + id);
+            return RedirectToAction("Index");
         }
 
     }
