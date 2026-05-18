@@ -77,4 +77,4 @@ Proje modern yazılım prensiplerine (Clean Code & SOLID) uygun olarak Katmanlı
 ---
 > **Geliştirici Notu:** Bu proje, modüler ve yüksek performanslı yapısı sayesinde eğitim kurumları, özel ders verenler ve kurs platformu kurmak isteyenler için ölçeklenebilir bir temel oluşturur.
 
-*Developed with ❤️ as a modern education platform.*
+
